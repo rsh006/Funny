@@ -3,142 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Mission 🎂</title>
+
+<title>Birthday Alert 🎂</title>
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #fff4e6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff4e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  text-align: center;
+  width: 430px;
+  max-width: 85%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+button {
+  border: none;
+  padding: 13px 22px;
+  margin: 10px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#revealBtn {
+  background: #ff5c8a;
+  color: white;
+}
+
+#birthday {
+  background: #ff5c8a;
+  color: white;
+}
+
+#work {
+  background: #333;
+  color: white;
+  position: relative;
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+
+/* Birthday photo */
+
+.photoBox {
+  position: relative;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+#birthdayPhoto {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #ff5c8a;
+}
+
+
+/* Birthday hat */
+
+.hat {
+  position: absolute;
+  font-size: 75px;
+  top: -55px;
+  left: 70px;
+  transform: rotate(-10deg);
+}
+
+
+/* Silly dance */
+
+.dance {
+  animation: funnyDance 0.7s infinite alternate;
+}
+
+@keyframes funnyDance {
+
+  0% {
+    transform: rotate(-7deg) translateX(-8px);
   }
 
-  .card {
-    background: white;
-    padding: 35px;
-    border-radius: 20px;
-    text-align: center;
-    width: 420px;
-    max-width: 85%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  25% {
+    transform: rotate(7deg) translateY(-10px);
   }
 
-  h1 {
-    margin-top: 0;
+  50% {
+    transform: rotate(-10deg) scale(1.05);
   }
 
-  button {
-    border: none;
-    padding: 12px 20px;
-    margin: 10px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+  75% {
+    transform: rotate(10deg) translateX(8px);
   }
 
-  #birthday {
-    background: #ff5c8a;
-    color: white;
+  100% {
+    transform: rotate(-5deg) translateY(-5px);
+  }
+}
+
+
+/* Confetti */
+
+.confetti {
+  font-size: 30px;
+  animation: bounce 0.8s infinite alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
   }
 
-  #work {
-    background: #333;
-    color: white;
-    position: relative;
+  to {
+    transform: translateY(-12px);
   }
+}
 
-  #message {
-    margin-top: 20px;
-    font-size: 18px;
-  }
-
-  .big {
-    font-size: 45px;
-  }
 </style>
 </head>
+
 
 <body>
 
 <div class="card">
 
-  <div id="start">
 
-    <h1>Important Question 🚨</h1>
+<!-- FIRST SCREEN -->
 
-    <p>
-      It's your birthday today.<br>
-      What would you like to do?
-    </p>
+<div id="start">
 
-    <button id="birthday">Celebrate 🎂</button>
-    <button id="work">Work 💻</button>
+  <div style="font-size:50px;">🚨</div>
 
-    <p id="message"></p>
+  <h1>Important Office Announcement</h1>
 
-  </div>
+  <p>
+    Someone has a birthday today...
+  </p>
 
-  <div id="final" style="display:none;">
+  <p>
+    Any guesses? 👀
+  </p>
 
-    <div class="big">🎉🎂🥳</div>
-
-    <h1>Correct answer!</h1>
-
-    <p>
-      Happy Birthday! 🎈
-    </p>
-
-    <p>
-      May your meetings be short,<br>
-      your coffee be strong,<br>
-      and your inbox be suspiciously quiet today.
-    </p>
-
-    <p><b>Enjoy your day!</b></p>
-
-  </div>
+  <button id="revealBtn">
+    Click to find out who
+  </button>
 
 </div>
 
 
+
+<!-- BIRTHDAY REVEAL -->
+
+<div id="reveal" style="display:none;">
+
+  <div class="confetti">
+    🎉 🎊 🎈 🎉
+  </div>
+
+  <h1>IT'S YOU! 🫵😂</h1>
+
+
+  <div class="photoBox dance">
+
+    <!-- CHANGE photo.jpg TO YOUR IMAGE FILE -->
+
+    <img
+      src="photo.jpg"
+      id="birthdayPhoto"
+      alt="Birthday person"
+    >
+
+    <div class="hat">🥳</div>
+
+  </div>
+
+
+ 
+  <h1>
+    HAPPY BIRTHDAY, Nina! 🎂
+  </h1>
+
+
+  <p>
+    Now for the most important question...
+  </p>
+
+  <p>
+    What would you like to do today?
+  </p>
+
+
+  <button id="birthday">
+    Celebrate 🎂
+  </button>
+
+  <button id="work">
+    Work 💻
+  </button>
+
+
+  <p id="message"></p>
+
+</div>
+
+
+
+<!-- FINAL SCREEN -->
+
+<div id="final" style="display:none;">
+
+  <div style="font-size:55px;">
+    🎉🎂🥳🎈
+  </div>
+
+  <h1>Correct answer!</h1>
+
+  <p>
+    Excellent decision.
+  </p>
+
+  <p>
+    May your meetings be short,<br>
+    your coffee be strong,<br>
+    and your inbox be suspiciously quiet today.
+  </p>
+
+  <p>
+    <b>Happy Birthday! 🎂</b>
+  </p>
+
+</div>
+
+
+</div>
+
+
+
 <script>
 
+const revealBtn = document.getElementById("revealBtn");
 const birthday = document.getElementById("birthday");
 const work = document.getElementById("work");
 const message = document.getElementById("message");
 
 let attempts = 0;
 
+
+
+// Reveal birthday person
+
+revealBtn.addEventListener("click", function() {
+
+  document.getElementById("start").style.display = "none";
+
+  document.getElementById("reveal").style.display = "block";
+
+});
+
+
+
+// Work button joke
+
 work.addEventListener("click", function() {
 
   attempts++;
 
   const messages = [
+
     "Work? On your birthday? 🤨",
+
     "Please reconsider your priorities.",
+
     "HR has rejected this decision.",
+
     "Your colleagues strongly disagree.",
-    "Okay... the Work button is leaving."
+
+    "Are you really trying this again? 😂",
+
+    "Okay... the Work button is leaving. 🏃"
+
   ];
+
 
   message.textContent =
     messages[Math.min(attempts - 1, messages.length - 1)];
 
-  // Move the work button
+
   work.style.position = "absolute";
-  work.style.left = Math.random() * 70 + "%";
-  work.style.top = Math.random() * 70 + "%";
+
+  work.style.left =
+    Math.random() * 70 + "%";
+
+  work.style.top =
+    Math.random() * 70 + "%";
 
 });
 
 
+
+// Celebrate
+
 birthday.addEventListener("click", function() {
 
-  document.getElementById("start").style.display = "none";
+  document.getElementById("reveal").style.display = "none";
+
   document.getElementById("final").style.display = "block";
 
 });
